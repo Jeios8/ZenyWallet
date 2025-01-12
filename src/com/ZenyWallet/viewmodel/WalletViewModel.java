@@ -1,13 +1,13 @@
-package com.ZenyWallet.presenter;
+package com.ZenyWallet.viewmodel;
 
-import com.ZenyWallet.model.WalletService;
+import com.ZenyWallet.Service.WalletService;
 import com.ZenyWallet.view.WalletView;
 
-public class WalletPresenter {
+public class WalletViewModel {
     private final WalletView walletView;
     private final WalletService walletService;
 
-    public WalletPresenter(WalletView walletView, WalletService walletService) {
+    public WalletViewModel(WalletView walletView, WalletService walletService) {
         this.walletView = walletView;
         this.walletService = walletService;
     }

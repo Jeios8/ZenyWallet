@@ -1,16 +1,16 @@
 package com.ZenyWallet;
 
-import com.ZenyWallet.model.Database;
-import com.ZenyWallet.model.WalletService;
-import com.ZenyWallet.presenter.WalletPresenter;
+import com.ZenyWallet.model.UserRepository;
+import com.ZenyWallet.Service.WalletService;
+import com.ZenyWallet.viewmodel.WalletViewModel;
 import com.ZenyWallet.view.WalletView;
 
 public class Main {
     public static void main(String[] args) {
-        Database db = new Database();
+        UserRepository userRepository = new UserRepository();
         WalletView walletView = new WalletView();
-        WalletService walletService = new WalletService(db);
-        WalletPresenter walletPresenter = new WalletPresenter(walletView, walletService);
+        WalletService walletService = new WalletService(userRepository);
+        WalletViewModel walletPresenter = new WalletViewModel(walletView, walletService);
 
         walletPresenter.start();
     }

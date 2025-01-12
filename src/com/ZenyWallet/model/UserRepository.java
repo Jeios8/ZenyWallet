@@ -1,12 +1,11 @@
 package com.ZenyWallet.model;
 
 import java.util.HashMap;
-import com.ZenyWallet.model.User;
 
-public class Database {
+public class UserRepository {
     private HashMap<Integer, User> userDB;
 
-    public Database() {
+    public UserRepository() {
         userDB = new HashMap<>();
 
         initDatabase();
