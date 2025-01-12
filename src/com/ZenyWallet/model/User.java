@@ -1,24 +1,28 @@
 package com.ZenyWallet.model;
 
 public class User {
-    private int userID;
-    private int pin;
-    private String name;
+    private final String userID;
+    private String pin;
+    private final String name;
     private double balance;
 
-    public User (int userID, int pin, String name, double balance) {
+    public User(String userID, String pin, String name, double balance) {
         this.userID = userID;
         this.pin = pin;
         this.name = name;
         this.balance = balance;
     }
 
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public String getName() {
@@ -29,13 +33,11 @@ public class User {
         return balance;
     }
 
-    public double deductBalance(double balance) {
-        this.balance -= balance;
-        return this.balance;
+    public void addBalance(double newBalance) {
+        balance += newBalance;
     }
 
-    public double addBalance(double balance) {
-        this.balance += balance;
-        return this.balance;
+    public void deductBalance(double newBalance) {
+        balance -= newBalance;
     }
 }

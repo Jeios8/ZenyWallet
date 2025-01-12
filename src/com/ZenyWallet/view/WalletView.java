@@ -5,49 +5,36 @@ import java.util.Scanner;
 public class WalletView {
     private final Scanner scanner;
 
-    public WalletView() {
-        scanner = new Scanner(System.in);
+    public WalletView(){
+        this.scanner = new Scanner(System.in);
     }
 
-    public void displayHeader() {
-        System.out.println("=======================================");
-        System.out.println("=      ZenyWallet Banking System      =");
-        System.out.println("=======================================\n");
+    public void displayMessage(String msg) {
+        System.out.println(msg);
     }
 
-    public void displayMainMenu() {
-        System.out.println("1. Check Balance");
-        System.out.println("2. Deposit");
-        System.out.println("3. Withdraw");
-        System.out.println("4. Send Money");
-        System.out.println("5. Exit\n");
-    }
-
-    public int getIntInput (String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            if (scanner.hasNextInt()) {
-                return scanner.nextInt();
-            } else {
-                System.out.println("Invalid Input.");
-                scanner.next();
-            }
+    public void displayMenu(String title, String[] options) {
+        System.out.println(title);
+        System.out.println("----------------------------\n");
+        for (int i = 0; i < options.length; i++) {
+            System.out.println((i + 1) + ". " + options[i]);
         }
     }
 
-    public double getDoubleInput (String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            if (scanner.hasNextDouble()) {
-                return scanner.nextDouble();
-            } else {
-                System.out.println("Invalid Input.");
-                scanner.next();
-            }
+    public int getUserChoice() {
+        System.out.print("\nPlease choose an option: ");
+        if (scanner.hasNextInt()) {
+            return scanner.nextInt();
+        } else {
+            scanner.nextLine();
+            return 0;
         }
     }
 
-    public void displayMessage(String prompt) {
-        System.out.println(prompt);
+    public String getUserInput(String prompt) {
+        System.out.print(prompt);
+        if (scanner.hasNext()) return scanner.next();
+        scanner.nextLine();
+        return null;
     }
 }
