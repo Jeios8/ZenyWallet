@@ -42,8 +42,8 @@ public class WalletViewModel {
         String pin;
 
         for (int i = 0; i < 3; i++) {
-            walletView.displayMessage("\nEnter 0 to cancel login.");
             userID = walletView.getUserInput("Enter UserID: ");
+<<<<<<< HEAD
             // Check if the user entered "0" to cancel the login
             if (userID.equals("0")) {
                 walletView.displayMessage("\nLogin canceled.");
@@ -51,15 +51,21 @@ public class WalletViewModel {
             }
 
             if (userID.matches("\\d{6}") && userRepository.authenticateUserID(userID)) {
+=======
+            if (userID != null && userID.matches("\\d{6}") && userRepository.authenticateUserID(userID)) {
+>>>>>>> parent of e18e2c8 (- changed database system from MySQL to SQLite)
                 for (int j = 0; j < 3; j++) {
-                    walletView.displayMessage("\nEnter 0 to cancel login.");
                     pin = walletView.getUserInput("Enter PIN: ");
+<<<<<<< HEAD
                     if (pin.equals("0")) {
                         walletView.displayMessage("\nLogin canceled.");
                         return;  // Exit the login process
                     }
 
                     if (pin.matches("\\d{4}") && userRepository.authenticatePIN(userID, pin)) {
+=======
+                    if (pin != null && pin.matches("\\d{4}") && userRepository.authenticatePIN(userID, pin)) {
+>>>>>>> parent of e18e2c8 (- changed database system from MySQL to SQLite)
                         walletView.displayMessage("Login successful!\n");
                         ACTIVE_USER = userRepository.getUser(userID);
                         mainMenu();
@@ -82,25 +88,29 @@ public class WalletViewModel {
         String userID;
         String pin;
         do {
-            walletView.displayMessage("\nEnter 0 to cancel registration.");
             userID = walletView.getUserInput("Enter User ID: ");
+<<<<<<< HEAD
 
             // Check if the user entered "0" to cancel the registration
             if (userID.equals("0")) {
                 walletView.displayMessage("\nRegistration canceled.");
                 return;  // Exit the login process
             }
+=======
+>>>>>>> parent of e18e2c8 (- changed database system from MySQL to SQLite)
         } while (userID == null || !userID.matches("\\d{6}"));
 
         do {
-            walletView.displayMessage("\nEnter 0 to cancel registration.");
             pin = walletView.getUserInput("Enter User Pin: ");
+<<<<<<< HEAD
 
             // Check if the user entered "0" to cancel the registration
             if (userID.equals("0")) {
                 walletView.displayMessage("\nRegistration canceled.");
                 return;  // Exit the login process
             }
+=======
+>>>>>>> parent of e18e2c8 (- changed database system from MySQL to SQLite)
         } while (pin == null || !pin.matches("\\d{4}"));
 
         String name = walletView.getUserInput("Enter your name: ");
