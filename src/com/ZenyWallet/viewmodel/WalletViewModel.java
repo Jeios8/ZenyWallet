@@ -20,14 +20,20 @@ public class WalletViewModel {
             walletView.displayMenu(new String[]{"Login", "Register", "Exit"});
             int choice = walletView.getUserChoice();
             switch (choice) {
-                case 1 -> login();
-                case 2 -> register();
-                case 3 -> {
+                case 1:
+                    login();
+                    break;
+                case 2:
+                    register();
+                    break;
+                case 3:
                     walletView.displayMessage("Thank you for using ZenyWallet.");
                     return;
-                }
-                default -> walletView.displayMessage("Invalid option. Please try again.");
+                default:
+                    walletView.displayMessage("Invalid option. Please try again.");
+                    break;
             }
+
         }
     }
 
@@ -105,15 +111,24 @@ public class WalletViewModel {
             walletView.displayHeader(greetings);
             walletView.displayMenu(new String[]{"Check Balance", "Cash-In", "Money Transfer", "Logout"});
             switch (walletView.getUserChoice()) {
-                case 1 -> checkBalance();
-                case 2 -> cashin();
-                case 3 -> moneyTransfer();
-                case 4 -> {
+                case 1:
+                    checkBalance();
+                    break;
+                case 2:
+                    cashin();
+                    break;
+                case 3:
+                    moneyTransfer();
+                    break;
+                case 4:
                     walletView.displayMessage("You have been logged-out.");
                     ACTIVE_USER = null;
-                }
-                default -> walletView.displayMessage("Invalid option. Please try again.");
+                    break;
+                default:
+                    walletView.displayMessage("Invalid option. Please try again.");
+                    break;
             }
+
         }
     }
 
