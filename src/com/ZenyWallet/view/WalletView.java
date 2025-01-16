@@ -27,22 +27,36 @@ public class WalletView {
 
     public int getUserChoice() {
         System.out.print("\nPlease choose an option: ");
-        if (scanner.hasNextInt()) return scanner.nextInt();
-        scanner.nextLine();
-        return 0;
+        int choice = 0;
+        if (scanner.hasNextInt()) {
+            choice = scanner.nextInt();
+            scanner.nextLine();
+        } else {
+            scanner.nextLine();
+        }
+        return choice;
     }
 
     public String getUserInput(String prompt) {
         System.out.print(prompt);
-        if (scanner.hasNext()) return scanner.next();
-        scanner.nextLine();
-        return null;
+        String userInput = null;
+        if (scanner.hasNext()) {
+            userInput = scanner.nextLine();
+        } else {
+            scanner.nextLine();
+        }
+        return userInput;
     }
 
     public double getAmountInput(String prompt) {
         System.out.print(prompt);
-        if (scanner.hasNextDouble()) return scanner.nextDouble();
-        scanner.nextLine();
-        return -1;
+        double amount = -1;
+        if (scanner.hasNextDouble()) {
+            amount = scanner.nextDouble();
+            scanner.nextLine();
+        } else {
+            scanner.nextLine();
+        }
+        return amount;
     }
 }

@@ -5,19 +5,19 @@ import java.util.HashMap;
 
 public class UserRepository {
     private final String db_url;
-    private final String db_username;
-    private final String db_password;
+    // private final String db_username;
+    // private final String db_password;
 
-    public UserRepository(String db_url, String db_username, String db_password) {
+    public UserRepository(String db_url) {
         this.db_url = db_url;
-        this.db_username = db_username;
-        this.db_password = db_password;
+        // this.db_username = db_username;
+        // this.db_password = db_password;
     }
 
     public boolean authenticateUserID(String userID) {
         String query = "SELECT COUNT(*) FROM USERS WHERE userid = ?";
 
-        try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password);
+        try (Connection conn = DriverManager.getConnection(db_url);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, userID);
@@ -36,7 +36,7 @@ public class UserRepository {
     public boolean authenticatePIN(String userID, String pin) {
         String query = "SELECT COUNT(*) FROM USERS WHERE userid = ? AND pin = ?";
 
-        try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password);
+        try (Connection conn = DriverManager.getConnection(db_url);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, userID);
@@ -57,7 +57,7 @@ public class UserRepository {
         String checkQuery = "SELECT COUNT(*) FROM USERS WHERE userid = ?";
         String insertQuery = "INSERT INTO USERS (userid, pin, name, balance) VALUES (?, ?, ?, ?)";
 
-        try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
+        try (Connection conn = DriverManager.getConnection(db_url)) {
             // Check if the user already exists
             try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
                 checkStmt.setString(1, user.getUserID());
@@ -90,7 +90,7 @@ public class UserRepository {
         String query = "SELECT pin, name, balance FROM USERS WHERE userid = ?";
         User user = null;
 
-        try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password);
+        try (Connection conn = DriverManager.getConnection(db_url);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, userID);
@@ -115,7 +115,7 @@ public class UserRepository {
     public void updateBalance(String userID, double newBalance) {
         String query = "UPDATE USERS SET balance = ? WHERE userid = ?";
 
-        try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password);
+        try (Connection conn = DriverManager.getConnection(db_url);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             // Set the parameters
