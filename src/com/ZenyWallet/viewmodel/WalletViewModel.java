@@ -22,13 +22,17 @@ public class WalletViewModel {
             walletView.displayHeader("Welcome to ZenyWallet");
             walletView.displayMenu(new String[]{"Login", "Register", "Exit"});
             switch (walletView.getUserChoice()) {
-                case 1 -> login();
-                case 2 -> register();
-                case 3 -> {
+                case 1 :
+                    login();
+                    break;
+                case 2 : 
+                    register();
+                    break;
+                case 3 : {
                     walletView.displayMessage("Thank you for using ZenyWallet.");
                     return;
                 }
-                default -> walletView.displayMessage("Invalid option. Please try again.");
+                default : walletView.displayMessage("Invalid option. Please try again.");
             }
         }
     }
@@ -40,9 +44,9 @@ public class WalletViewModel {
         for (int i = 0; i < 3; i++) {
             walletView.displayMessage("\nEnter 0 to cancel login.");
             userID = walletView.getUserInput("Enter UserID: ");
-            // Check if the user entered "0" to cancel the registration
+            // Check if the user entered "0" to cancel the login
             if (userID.equals("0")) {
-                walletView.displayMessage("Login canceled.");
+                walletView.displayMessage("\nLogin canceled.");
                 return;  // Exit the login process
             }
 
@@ -51,7 +55,7 @@ public class WalletViewModel {
                     walletView.displayMessage("\nEnter 0 to cancel login.");
                     pin = walletView.getUserInput("Enter PIN: ");
                     if (pin.equals("0")) {
-                        walletView.displayMessage("Login canceled.");
+                        walletView.displayMessage("\nLogin canceled.");
                         return;  // Exit the login process
                     }
 
@@ -83,7 +87,7 @@ public class WalletViewModel {
 
             // Check if the user entered "0" to cancel the registration
             if (userID.equals("0")) {
-                walletView.displayMessage("Registration canceled.");
+                walletView.displayMessage("\nRegistration canceled.");
                 return;  // Exit the login process
             }
         } while (userID == null || !userID.matches("\\d{6}"));
@@ -94,7 +98,7 @@ public class WalletViewModel {
 
             // Check if the user entered "0" to cancel the registration
             if (userID.equals("0")) {
-                walletView.displayMessage("Registration canceled.");
+                walletView.displayMessage("\nRegistration canceled.");
                 return;  // Exit the login process
             }
         } while (pin == null || !pin.matches("\\d{4}"));
@@ -112,15 +116,20 @@ public class WalletViewModel {
             walletView.displayHeader(greetings);
             walletView.displayMenu(new String[]{"Check Balance", "Cash-In", "Money Transfer", "Logout"});
             switch (walletView.getUserChoice()) {
-                case 1 -> checkBalance();
-                case 2 -> cashin();
-                case 3 -> moneyTransfer();
-                case 4 -> {
+                case 1 : 
+                    checkBalance();
+                    break;
+                case 2 : 
+                    cashin();
+                    break;
+                case 3 : 
+                    moneyTransfer();
+                    break;
+                case 4 :
                     walletView.displayMessage("You have been logged-out.");
                     ACTIVE_USER = null;
                     return;
-                }
-                default -> walletView.displayMessage("Invalid option. Please try again.");
+                default : walletView.displayMessage("Invalid option. Please try again.");
             }
         }
     }
@@ -151,6 +160,7 @@ public class WalletViewModel {
                 walletView.displayMessage("\nPress 'Enter' to go back to the Main Menu...");
                 Scanner scanner = new Scanner(System.in);
                 scanner.nextLine();
+                scanner.close();
                 return;
             } else if (newBalance == 0) {
                 return;
